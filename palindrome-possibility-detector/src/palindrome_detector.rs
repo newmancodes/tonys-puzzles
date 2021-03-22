@@ -25,10 +25,7 @@ impl PalindromePossibilityDetector for EasyPalindromePossibilityDetector {
                 }
 
                 let mut new_char_count = 1;
-                match counts.get(&chars) {
-                    Some(v) => new_char_count = v + 1,
-                    None => {},
-                };
+                if let Some(v) = counts.get(&chars) { new_char_count = v + 1 };
                 counts.insert(chars, new_char_count);
             }
         }
