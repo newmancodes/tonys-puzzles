@@ -115,4 +115,12 @@ mod tests {
         let result = palindrome_detector.could_be_a_palindrome(&candidate);
         assert_eq!(true, result);
     }
+
+    #[test]
+    fn cyrillic_example() {
+        let candidate = String::from("ѹBѸm b");
+        let palindrome_detector = EasyPalindromePossibilityDetector::new();
+        let result = palindrome_detector.could_be_a_palindrome(&candidate);
+        assert_eq!(true, result);
+    }
 }
