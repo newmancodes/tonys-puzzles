@@ -14,3 +14,4 @@ name = "cube_sum_finder_benchmarks"
 harness = false
 
 [dependencies]
+stopwatch = "0.0.7"

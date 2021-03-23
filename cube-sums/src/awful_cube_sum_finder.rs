@@ -19,9 +19,6 @@ impl CubeSumFinder for AwfulCubeSubFinder {
                     let c_cubed = c * c * c;
                     for d in 1..(range + 1) {
                         let d_cubed = d * d * d;
-                        if a == b || a == c || a == d || b == c || c == d {
-                            continue;
-                        }
 
                         let lhs = a_cubed + b_cubed;
                         let rhs = c_cubed + d_cubed;
@@ -35,13 +32,6 @@ impl CubeSumFinder for AwfulCubeSubFinder {
             }
         }
 
-        found_cube_sums.sort_by(|x, y| x.sum.cmp(&y.sum));
-
-        let mut unique_found_cube_sums = Vec::new();
-        for chunk in found_cube_sums.chunks(8) {
-            let component = *chunk.first().unwrap();
-            unique_found_cube_sums.push(component);
-        }
-        unique_found_cube_sums
+        found_cube_sums
     }
 }
