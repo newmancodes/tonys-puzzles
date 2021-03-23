@@ -10,7 +10,7 @@ edition = "2018"
 criterion = { version = "0.3.4", features = [ "html_reports" ] }
 
 [[bench]]
-name = "my_benchmark"
+name = "cube_sum_finder_benchmarks"
 harness = false
 
 [dependencies]
