@@ -6,6 +6,11 @@ impl CubeSumFinder for AwfulCubeSubFinder {
     fn find_cube_sums(&self, range :usize) -> Vec<CubeSumComponent> {
         let mut found_cube_sums = Vec::new();
 
+        let mut cubes = Vec::with_capacity(1000);
+        for i in 1..(range + 1) {
+            cubes.push(i * i * i);
+        }
+
         for a in 1..(range + 1) {
             let a_cubed = a * a * a;
             for b in 1..(range + 1) {
@@ -30,6 +35,13 @@ impl CubeSumFinder for AwfulCubeSubFinder {
             }
         }
 
-        found_cube_sums
+        found_cube_sums.sort_by(|x, y| x.sum.cmp(&y.sum));
+
+        let mut unique_found_cube_sums = Vec::new();
+        for chunk in found_cube_sums.chunks(8) {
+            let component = *chunk.first().unwrap();
+            unique_found_cube_sums.push(component);
+        }
+        unique_found_cube_sums
     }
 }

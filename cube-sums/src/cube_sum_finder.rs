@@ -2,6 +2,7 @@ pub trait CubeSumFinder {
     fn find_cube_sums(&self, range :usize) -> Vec<CubeSumComponent>;
 }
 
+#[derive(Copy, Clone)]
 pub struct CubeSumComponent {
     pub a: usize,
     pub b: usize,
