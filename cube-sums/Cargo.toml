@@ -1,0 +1,18 @@
+[package]
+name = "cube-sums"
+version = "0.1.0"
+authors = ["Stephen Newman <steve@newman.digital>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dev-dependencies]
+criterion = { version = "0.3.4", features = [ "html_reports" ] }
+
+[[bench]]
+name = "cube_sum_finder_benchmarks"
+harness = false
+
+[dependencies]
+num-integer = "0.1.44"
+stopwatch = "0.0.7"
