@@ -22,7 +22,8 @@ impl CubeSumFinder for LessAwfulCubeSubFinder {
                     let potential_d = lhs - c_cubed;
 
                     let d = potential_d.nth_root(3);
-                    if d >= 1 && d <= range {
+                    let rhs = c_cubed + (d * d * d);
+                    if lhs == rhs && d >= 1 && d <= range {
                         let component = CubeSumComponent::new(a, b, c, d, lhs);
                         found_cube_sums.push(component);
                         break;

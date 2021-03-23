@@ -15,7 +15,7 @@ use stopwatch::Stopwatch;
 fn main() {
     let finder = LessAwfulCubeSubFinder {};
     let mut sw = Stopwatch::start_new();
-    let found_cube_sums = finder.find_cube_sums(100);
+    let found_cube_sums = finder.find_cube_sums(1000);
     let elapsed = sw.elapsed();
     sw.stop();
     for found in found_cube_sums {
