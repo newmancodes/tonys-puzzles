@@ -1,5 +1,3 @@
-use std::usize;
-
 pub struct StringBuilder {
     chars: Vec<char>,
     max_capacity: usize,
@@ -40,6 +38,23 @@ impl StringBuilder {
             chars,
             max_capacity,
         }
+    }
+
+    pub fn with_value_and_capacity(value: &str, capacity: usize) -> Self {
+        let mut required_capacity = capacity;
+        if required_capacity < value.chars().count() {
+            required_capacity = value.len();
+        }
+
+        let mut chars = Vec::with_capacity(required_capacity);
+        for char in value.chars() {
+            chars.push(char);
+        }
+
+        StringBuilder {
+            chars,
+            max_capacity: usize::MAX,
+        }        
     }
 
     pub fn capacity(&self) -> usize {
@@ -110,5 +125,23 @@ mod tests {
         let capacity: usize = 16;
         let max_capacity: usize = 15;
         let _ = StringBuilder::with_max_capacity(capacity, max_capacity);
+    }
+
+    #[test]
+    fn with_value_and_capacity() {
+        let value = String::from("some_value");
+        let capacity: usize = 20;
+        let sb = StringBuilder::with_value_and_capacity(&value, capacity);
+        assert_eq!(capacity, sb.capacity());
+        assert_eq!(value, String::from(sb));
+    }
+
+    #[test]
+    fn with_value_and_capacity_expands_capacity_to_fit() {
+        let value = String::from("some_value");
+        let capacity: usize = 5;
+        let sb = StringBuilder::with_value_and_capacity(&value, capacity);
+        assert_eq!(10, sb.capacity());
+        assert_eq!(value, String::from(sb));
     }
 }
