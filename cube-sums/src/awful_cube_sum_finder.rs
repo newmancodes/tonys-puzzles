@@ -25,7 +25,6 @@ impl CubeSumFinder for AwfulCubeSubFinder {
                         if lhs == rhs {
                             let component = CubeSumComponent::new(a, b, c, d, lhs);
                             found_cube_sums.push(component);
-                            break;
                         }
                     }
                 }
