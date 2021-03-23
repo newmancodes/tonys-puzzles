@@ -1,15 +1,11 @@
 use crate::cube_sum_finder::{CubeSumFinder, CubeSumComponent};
 use num_integer::Roots;
-pub struct LessAwfulCubeSubFinder;
 
-impl CubeSumFinder for LessAwfulCubeSubFinder {
+pub struct LessAwfulCubeSumFinder;
+
+impl CubeSumFinder for LessAwfulCubeSumFinder {
     fn find_cube_sums(&self, range :usize) -> Vec<CubeSumComponent> {
         let mut found_cube_sums = Vec::new();
-
-        let mut cubes = Vec::with_capacity(1000);
-        for i in 1..(range + 1) {
-            cubes.push(i * i * i);
-        }
 
         for a in 1..(range + 1) {
             let a_cubed = a * a * a;
