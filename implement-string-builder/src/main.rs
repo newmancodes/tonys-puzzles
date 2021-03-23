@@ -9,5 +9,5 @@ fn main() {
     sb.append(", ");
     sb.append("world!");
 
-    println!("{}", sb.to_string());
+    println!("{}", String::from(sb));
 }

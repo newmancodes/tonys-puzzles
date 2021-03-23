@@ -14,15 +14,27 @@ impl StringBuilder {
         }
     }
 
+    pub fn with_value(value: &str) -> Self {
+        let chars = value.chars().collect();
+        StringBuilder {
+            chars
+        }
+    }
+
     pub fn capacity(&self) -> usize {
         self.chars.capacity()
     }
 
     pub fn append(&mut self, value: &str) {
+        for char in value.chars() {
+            self.chars.push(char);
+        }
     }
+}
 
-    pub fn to_string(&self) -> String {
-        String::from("")
+impl From<StringBuilder> for String {
+    fn from(sb: StringBuilder) -> Self {
+        sb.chars.into_iter().collect()
     }
 }
 
@@ -41,5 +53,12 @@ mod tests {
         let capacity = 512;
         let sb = StringBuilder::with_capacity(capacity);
         assert_eq!(capacity, sb.capacity());
+    }
+
+    #[test]
+    fn with_value_stringbuilder_has_value() {
+        let value = String::from("some_value");
+        let sb = StringBuilder::with_value(&value);
+        assert_eq!(value, String::from(sb));
     }
 }
